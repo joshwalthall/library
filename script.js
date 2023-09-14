@@ -1,3 +1,6 @@
+const pageContainer = document.querySelector('.page-container');
+const sidebarContainer = document.querySelector('.sidebar-container');
+
 const books = [];
 
 function Book(title, author, pageCount, genre, isRead) {
@@ -22,5 +25,5 @@ function Book(title, author, pageCount, genre, isRead) {
 
 function addBook(title, author, pageCount, genre, isRead) {
     let newBook = new Book(title, author, pageCount, genre, isRead);
-    
+    books.push(newBook);
 };

@@ -4,7 +4,10 @@
     --light: #D6DBD2;
     --lighter: #F2F5EA;
     --accent: #E75A7C;
-    --accent-muted: #BBC7A4;
+    --accent-muted: #7D84B2;
+    --card-body: #A37C40;
+    --card-body-two: #778472;
+    --card-shadow: #C1C9BB;
 }
 
 @font-face {
@@ -46,28 +49,55 @@ body {
 }
 
 header {
-    grid-area: 1 / 1 / 2 / 3;
+    grid-area: 1 / 2 / 2 / 3;
     display: grid;
     align-items: center;
     background-color: var(--dark);
+    box-shadow: 0px 0.3rem 0.3rem var(--card-shadow);
     height: 5rem;
     font-size: 2rem;
     color: var(--lighter);
     font-weight: 700;
     padding-left: 1rem;
+    z-index: 1;
 }
 
 .sidebar-container {
-    grid-area: 2 / 1 / 3 / 2;
-    background-color: var(--lighter);
-    color: var(--dark);
-    padding: 1rem;
-
+    grid-area: 1 / 1 / 3 / 2;
+    background-color: var(--accent-muted);
+    color: var(--lighter);
+    padding: 2rem;
 }
 
 .books-container {
     grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    gap: 1.7rem;
+    grid-template-columns: repeat(auto-fit, 15rem);
+    grid-template-rows: repeat(auto-fit, 17rem);
+    grid-auto-columns: 15rem;
+    grid-auto-rows: 17rem;
+    height: fit-content;
     background-color: var(--light);
+    padding: 2rem;
+}
+
+.books-container ul {
+    list-style-type: none;
+}
+
+.book-card {
+    background-color: var(--card-body-two);
+    color: var(--lighter);
+    padding: 1.3rem;
+    border: 1px solid var(--dark);
+    border-radius: 0.3rem;
+    box-shadow: 0.3rem 0.3rem 0.3rem var(--card-shadow);
+}
+
+.book-title {
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 footer {

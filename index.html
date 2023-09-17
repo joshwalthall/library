@@ -46,28 +46,20 @@
     <dialog id="new-book-dialog">
       <div class="form-container">
         <div class="form-title">Use the form below to add books to your library.</div>
-        <form id="new-book-form" action="" method="get">
-          <div class="form-row">
-            <div class="field-container">
-              <label for="title">TITLE <span class="req-star" aria-label="required">*</span></label>
-              <input type="text" id="title" name="title" required>
-            </div>
-            <div class="field-container">
-              <label for="author">AUTHOR <span class="req-star" aria-label="required">*</span></label>
-              <input type="text" id="author" name="author" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field-container">
-              <label for="page-count">PAGE COUNT</label>
-              <input type="text" id="page-count" name="page-count">
-            </div>
-            <div class="field-container">
-              <label for="genre">GENRE</label>
-              <input type="text" id="genre" name="genre">
-            </div>
-          </div>
+        <form id="new-book-form" action="" method="dialog">
+          <label for="title">TITLE <span class="req-star" aria-label="required">*</span></label>
+          <input type="text" id="title" name="title" required>
+          <label for="author">AUTHOR <span class="req-star" aria-label="required">*</span></label>
+          <input type="text" id="author" name="author" required>
+          <label for="page-count">PAGE COUNT</label>
+          <input type="text" id="page-count" name="page-count">
+          <label for="genre">GENRE</label>
+          <input type="text" id="genre" name="genre">
         </form>
+        <div class="form-buttons-container">
+          <button type="submit" id="add-book-button" form="new-book-form">Add Book</button>
+          <button>Cancel</button>
+        </div>
       </div>
     </dialog>
 

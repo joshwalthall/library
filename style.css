@@ -70,8 +70,35 @@ header {
 }
 
 .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form {
     display: grid;
-    gap: 1rem;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    grid-template-columns: max-content 10rem;
+}
+
+.form-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+label {
+    justify-self: end;
+}
+
+.req-star {
+    color: crimson;
+}
+
+dialog {
+    padding: 2rem;
+    border: 2px solid var(--dark);
+    border-radius: 0.5rem;
 }
 
 dialog::backdrop {

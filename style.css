@@ -69,10 +69,20 @@ header {
     padding: 2rem;
 }
 
+.form-container {
+    display: grid;
+    gap: 1rem;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(3px);
+}
+
 .books-container {
     grid-area: 2 / 2 / 3 / 3;
     display: grid;
-    gap: 1.7rem;
+    row-gap: 2rem;
+    column-gap: 1.3rem;
     grid-template-columns: repeat(auto-fit, 15rem);
     grid-template-rows: repeat(auto-fit, 17rem);
     grid-auto-columns: 15rem;
@@ -91,7 +101,10 @@ header {
     color: var(--lighter);
     padding: 1.3rem;
     border: 1px solid var(--dark);
-    border-radius: 0.3rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-top-left-radius: 0.1rem;
+    border-bottom-left-radius: 0.1rem;
     box-shadow: 0.3rem 0.3rem 0.3rem var(--card-shadow);
 }
 

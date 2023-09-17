@@ -15,7 +15,8 @@
     <header>My Library</header>
     
     <div class="sidebar-container">
-      <div class="form-title">Use the form below to add books to your library.</div>
+      <button id="new-book-button">NEW BOOK</button>
+      <!-- <div class="form-title">Use the form below to add books to your library.</div>
       <div class="form-container">
         <form id="new-book-form" action="" method="get">
           <div class="form-row">
@@ -39,32 +40,38 @@
             </div>
           </div>
         </form>
-      </div>
-    </div>
-
-    <div class="books-container">
-      
-      <!-- <div class="book-card">
-        <div class="book-title">Pandora's Star</div>
-        <ul class="book-details">
-          <li>Author: Peter F Hamilton</li>
-          <li>Page Count: 685</li>
-          <li>Genre: Sci-fi/Space Opera</li>
-          <li>Have Read: Yes</li>
-        </ul>
-      </div>
-
-      <div class="book-card">
-        <div class="book-title">Nine Princes in Amber</div>
-        <ul class="book-details">
-          <li>Author: Roger Zelazny</li>
-          <li>Page Count: 364</li>
-          <li>Genre: Fantasy</li>
-          <li>Have Read: Yes</li>
-        </ul>
       </div> -->
-
     </div>
+
+    <dialog id="new-book-dialog">
+      <div class="form-container">
+        <div class="form-title">Use the form below to add books to your library.</div>
+        <form id="new-book-form" action="" method="get">
+          <div class="form-row">
+            <div class="field-container">
+              <label for="title">TITLE <span class="req-star" aria-label="required">*</span></label>
+              <input type="text" id="title" name="title" required>
+            </div>
+            <div class="field-container">
+              <label for="author">AUTHOR <span class="req-star" aria-label="required">*</span></label>
+              <input type="text" id="author" name="author" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field-container">
+              <label for="page-count">PAGE COUNT</label>
+              <input type="text" id="page-count" name="page-count">
+            </div>
+            <div class="field-container">
+              <label for="genre">GENRE</label>
+              <input type="text" id="genre" name="genre">
+            </div>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <div class="books-container"></div>
 
     <footer>All Rights Reserved - Josh Walthall 2023</footer>
 

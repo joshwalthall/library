@@ -1,6 +1,10 @@
 const pageContainer = document.querySelector('.page-container');
 const sidebarContainer = document.querySelector('.sidebar-container');
 const booksContainer = document.querySelector('.books-container');
+const newBookButton = document.querySelector('#new-book-button');
+const newBookDialog = document.querySelector('#new-book-dialog');
+
+newBookButton.addEventListener('click', function() {openNewBookDialog();});
 
 const books = [];
 
@@ -9,7 +13,7 @@ const bookOne = {
     author: "Peter F Hamilton",
     pageCount: 935,
     genre: "Sci-fi",
-    isRead: true,
+    isRead: "Yes",
 };
 
 const bookTwo = {
@@ -17,7 +21,7 @@ const bookTwo = {
     author: "Roger Zelazny",
     pageCount: 357,
     genre: "Fantasy",
-    isRead: true,
+    isRead: "Yes",
 };
 
 const bookThree = {
@@ -25,7 +29,7 @@ const bookThree = {
     author: "Brandon Sanderson",
     pageCount: 999,
     genre: "Fantasy",
-    isRead: false,
+    isRead: "No",
 };
 
 const bookFour = {
@@ -33,7 +37,7 @@ const bookFour = {
     author: "Clive Barker",
     pageCount: 900,
     genre: "Fantasy",
-    isRead: true,
+    isRead: "Yes",
 };
 
 const bookFive = {
@@ -41,7 +45,7 @@ const bookFive = {
     author: "Robert Sapolsky",
     pageCount: 878,
     genre: "Science",
-    isRead: false,
+    isRead: "No",
 };
 
 function Book(title, author, pageCount, genre, isRead) {
@@ -62,6 +66,10 @@ function Book(title, author, pageCount, genre, isRead) {
     //     };
     //     bookInfo += bookReadText;
     //     return bookInfo;
+};
+
+function openNewBookDialog() {
+    newBookDialog.showModal();
 };
 
 function addBook(title, author, pageCount, genre, isRead) {
@@ -89,16 +97,16 @@ function addBookCard(book) {
     bookDetails.classList.add('book-details');
     
     let bookAuthor = document.createElement('li');
-    bookAuthor.textContent = book.author;
+    bookAuthor.textContent = `by ${book.author}`;
 
     let bookPageCount = document.createElement('li');
-    bookPageCount.textContent = book.pageCount;
+    bookPageCount.textContent = `${book.pageCount} pages`;
 
     let bookGenre = document.createElement('li');
-    bookGenre.textContent = book.genre;
+    bookGenre.textContent = `Genre: ${book.genre}`;
 
     let bookIsRead = document.createElement('li');
-    bookIsRead.textContent = book.isRead;
+    bookIsRead.textContent = `Read? ${book.isRead}`;
 
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookDetails);

@@ -2,9 +2,12 @@ const pageContainer = document.querySelector('.page-container');
 const sidebarContainer = document.querySelector('.sidebar-container');
 const booksContainer = document.querySelector('.books-container');
 const newBookButton = document.querySelector('#new-book-button');
+const cancelNewBookButton = document.querySelector('#cancel-new-book-button');
 const newBookDialog = document.querySelector('#new-book-dialog');
+const newBookForm = document.querySelector('#new-book-form');
 
 newBookButton.addEventListener('click', function() {openNewBookDialog();});
+cancelNewBookButton.addEventListener('click', function() {closeNewBookDialog();});
 
 const books = [];
 
@@ -70,6 +73,12 @@ function Book(title, author, pageCount, genre, isRead) {
 
 function openNewBookDialog() {
     newBookDialog.showModal();
+    newBookForm.reset();
+};
+
+function closeNewBookDialog() {
+    newBookDialog.close();
+    newBookForm.reset();
 };
 
 function addBook(title, author, pageCount, genre, isRead) {

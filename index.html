@@ -47,14 +47,16 @@
       <div class="form-container">
         <div class="form-title">Use the form below to add books to your library.</div>
         <form id="new-book-form" action="" method="dialog">
-          <label for="title">TITLE <span class="req-star" aria-label="required">*</span></label>
-          <input type="text" id="title" name="title" required>
-          <label for="author">AUTHOR <span class="req-star" aria-label="required">*</span></label>
-          <input type="text" id="author" name="author" required>
-          <label for="page-count">PAGE COUNT</label>
-          <input type="text" id="page-count" name="page-count">
-          <label for="genre">GENRE</label>
-          <input type="text" id="genre" name="genre">
+          <label for="book-title">TITLE <span class="req-star" aria-label="required">*</span></label>
+          <input type="text" id="book-title" name="title" required>
+          <label for="book-author">AUTHOR <span class="req-star" aria-label="required">*</span></label>
+          <input type="text" id="book-author" name="author" required>
+          <label for="book-page-count">PAGE COUNT</label>
+          <input type="text" id="book-page-count" name="page-count">
+          <label for="book-genre">GENRE</label>
+          <input type="text" id="book-genre" name="genre">
+          <label for="book-read">FINISHED READING?</label>
+          <input type="checkbox" id="book-read" name="book-read" value="yes">
         </form>
         <menu class="form-buttons-container">
           <button type="submit" id="add-book-button" form="new-book-form">Add Book</button>

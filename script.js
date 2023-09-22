@@ -2,12 +2,14 @@ const pageContainer = document.querySelector('.page-container');
 const sidebarContainer = document.querySelector('.sidebar-container');
 const booksContainer = document.querySelector('.books-container');
 const newBookButton = document.querySelector('#new-book-button');
+const addBookButton = document.querySelector('#add-book-button');
 const cancelNewBookButton = document.querySelector('#cancel-new-book-button');
 const newBookDialog = document.querySelector('#new-book-dialog');
 const newBookForm = document.querySelector('#new-book-form');
 
-newBookButton.addEventListener('click', function() {openNewBookDialog();});
-cancelNewBookButton.addEventListener('click', function() {closeNewBookDialog();});
+newBookButton.addEventListener('click', openNewBookDialog);
+newBookForm.addEventListener('submit', addBook);
+cancelNewBookButton.addEventListener('click', closeNewBookDialog);
 
 const books = [];
 
@@ -19,6 +21,7 @@ const bookOne = {
     isRead: "Yes",
 };
 
+
 const bookTwo = {
     title: "Nine Princes in Amber",
     author: "Roger Zelazny",
@@ -26,6 +29,7 @@ const bookTwo = {
     genre: "Fantasy",
     isRead: "Yes",
 };
+
 
 const bookThree = {
     title: "Stormlight Archive",
@@ -35,6 +39,7 @@ const bookThree = {
     isRead: "No",
 };
 
+
 const bookFour = {
     title: "Imajica",
     author: "Clive Barker",
@@ -43,6 +48,7 @@ const bookFour = {
     isRead: "Yes",
 };
 
+
 const bookFive = {
     title: "Behave",
     author: "Robert Sapolsky",
@@ -50,6 +56,7 @@ const bookFive = {
     genre: "Science",
     isRead: "No",
 };
+
 
 function Book(title, author, pageCount, genre, isRead) {
     this.title = title;
@@ -71,24 +78,49 @@ function Book(title, author, pageCount, genre, isRead) {
     //     return bookInfo;
 };
 
-function openNewBookDialog() {
+
+function openNewBookDialog(clickEvent) {
+    console.log(`Function openNewBookDialog received event: ${clickEvent}`);
     newBookDialog.showModal();
     newBookForm.reset();
 };
+
 
 function closeNewBookDialog() {
     newBookDialog.close();
     newBookForm.reset();
 };
 
-function addBook(title, author, pageCount, genre, isRead) {
+
+function addBook(submitEvent) {
+    submitEvent.preventDefault();
+    let title = document.getElementById('book-title').value;
+    let author = document.getElementById('book-author').value;
+    let pageCount = document.getElementById('book-page-count').value;
+    let genre = document.getElementById('book-genre').value;
+    let isRead = 'No';
+
+    console.log(`Checkbox value before: ${isRead}`);
+    console.log(`Checkbox.checked value: ${document.getElementById('book-read').checked}`);
+
+    if (document.getElementById('book-read').checked === true) {
+        isRead = 'Yes';
+    };
+
+    console.log(`Checkbox value after: ${isRead}`);
+
     let newBook = new Book(title, author, pageCount, genre, isRead);
     books.push(newBook);
+    addBookCard(newBook);
+    
+    closeNewBookDialog();
 };
+
 
 function populateBookCards() {
     books.forEach(addBookCard);
 };
+
 
 function addBookCard(book) {
     console.log('Function addBookCard executing...');
@@ -127,5 +159,6 @@ function addBookCard(book) {
     booksContainer.appendChild(bookCard);
 };
 
-books.push(bookOne, bookTwo, bookThree, bookFour, bookFive);
-populateBookCards();
+
+// books.push(bookOne, bookTwo, bookThree, bookFour, bookFive);
+// populateBookCards();

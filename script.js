@@ -64,18 +64,6 @@ function Book(title, author, pageCount, genre, isRead) {
     this.pageCount = pageCount;
     this.genre = genre;
     this.isRead = isRead;
-    // this.info = function() {
-    //     let bookInfo = "";
-    //     bookInfo += `${this.title} by ${this.author}, `;
-    //     bookInfo += `${this.pageCount} pages, `;
-    //     let bookReadText = '';
-    //     if (this.isRead === true) {
-    //         bookReadText = 'has been read';
-    //     } else if (this.isRead === false) {
-    //         bookReadText = 'hasn\'t been read';
-    //     };
-    //     bookInfo += bookReadText;
-    //     return bookInfo;
 };
 
 
@@ -158,7 +146,3 @@ function addBookCard(book) {
 
     booksContainer.appendChild(bookCard);
 };
-
-
-// books.push(bookOne, bookTwo, bookThree, bookFour, bookFive);
-// populateBookCards();

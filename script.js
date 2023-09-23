@@ -116,6 +116,14 @@ function addBook(submitEvent) {
 };
 
 
+function removeBook() {
+    bookIndex = Number(this.dataset.index);
+    delete books[bookIndex];
+    removeBookCards();
+    populateBookCards();
+};
+
+
 function removeBookCards() {
     while (booksContainer.firstChild) {
         booksContainer.removeChild(booksContainer.lastChild);
@@ -134,9 +142,6 @@ function addBookCard(book) {
     let bookCard = document.createElement('div');
     console.log(`  - Created bookCard: ${bookCard}`);
     bookCard.classList.add('book-card');
-
-    bookIndex = books.indexOf(book);
-    bookCard.dataset.index = `${bookIndex}`;
 
     let bookTitle = document.createElement('div');
     bookTitle.classList.add('book-title');
@@ -159,6 +164,9 @@ function addBookCard(book) {
 
     let removeBookButton = document.createElement('button');
     removeBookButton.classList.add('remove-book-button');
+    bookIndex = books.indexOf(book);
+    removeBookButton.dataset.index = `${bookIndex}`;
+    removeBookButton.addEventListener('click', removeBook);
 
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookDetails);

@@ -58,8 +58,7 @@ const bookFive = {
 };
 
 
-function Book(index, title, author, pageCount, genre, isRead) {
-    this.index = index;
+function Book(title, author, pageCount, genre, isRead) {
     this.title = title;
     this.author = author;
     this.pageCount = pageCount;
@@ -83,7 +82,6 @@ function closeNewBookDialog() {
 
 function addBook(submitEvent) {
     submitEvent.preventDefault();
-    let index = books.length;
     let title = document.getElementById('book-title').value;
     let author = document.getElementById('book-author').value;
     let pageCount = document.getElementById('book-page-count').value;
@@ -99,11 +97,18 @@ function addBook(submitEvent) {
 
     console.log(`Checkbox value after: ${isRead}`);
 
-    let newBook = new Book(index, title, author, pageCount, genre, isRead);
+    let newBook = new Book(title, author, pageCount, genre, isRead);
     books.push(newBook);
     addBookCard(newBook);
     
     closeNewBookDialog();
+};
+
+
+function removeBookCards() {
+    while (booksContainer.firstChild) {
+        booksContainer.removeChild(booksContainer.lastChild);
+    };
 };
 
 
@@ -118,7 +123,9 @@ function addBookCard(book) {
     let bookCard = document.createElement('div');
     console.log(`  - Created bookCard: ${bookCard}`);
     bookCard.classList.add('book-card');
-    console.log('  - Added book-card class to bookCard');
+
+    bookIndex = books.indexOf(book);
+    bookCard.dataset.index = `${bookIndex}`;
 
     let bookTitle = document.createElement('div');
     bookTitle.classList.add('book-title');
@@ -127,8 +134,8 @@ function addBookCard(book) {
     let bookDetails = document.createElement('ul');
     bookDetails.classList.add('book-details');
 
-    let bookIndex = document.createElement('li');
-    bookIndex.textContent = `Index: ${book.index}`;
+    // let bookIndex = document.createElement('li');
+    // bookIndex.textContent = `Index: ${book.index}`;
     
     let bookAuthor = document.createElement('li');
     bookAuthor.textContent = `by ${book.author}`;
@@ -144,7 +151,7 @@ function addBookCard(book) {
 
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookDetails);
-    bookDetails.appendChild(bookIndex);
+    // bookDetails.appendChild(bookIndex);
     bookDetails.appendChild(bookAuthor);
     bookDetails.appendChild(bookPageCount);
     bookDetails.appendChild(bookGenre);

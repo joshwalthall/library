@@ -57,6 +57,17 @@ const bookFive = {
     isRead: "No",
 };
 
+const bookSix = {
+    title: "Really Really Long Book Title for Testing Purposes",
+    author: "Testy McTesterson",
+    pageCount: 700,
+    genre: "Fiction",
+    isRead: "No",
+};
+
+
+const testBooks = [bookOne, bookTwo, bookThree, bookFour, bookFive, bookSix];
+
 
 function Book(title, author, pageCount, genre, isRead) {
     this.title = title;
@@ -131,27 +142,27 @@ function addBookCard(book) {
     bookTitle.classList.add('book-title');
     bookTitle.textContent = book.title;
 
-    let bookDetails = document.createElement('ul');
+    let bookDetails = document.createElement('div');
     bookDetails.classList.add('book-details');
-
-    // let bookIndex = document.createElement('li');
-    // bookIndex.textContent = `Index: ${book.index}`;
     
-    let bookAuthor = document.createElement('li');
+    let bookAuthor = document.createElement('div');
     bookAuthor.textContent = `by ${book.author}`;
 
-    let bookPageCount = document.createElement('li');
+    let bookPageCount = document.createElement('div');
     bookPageCount.textContent = `${book.pageCount} pages`;
 
-    let bookGenre = document.createElement('li');
+    let bookGenre = document.createElement('div');
     bookGenre.textContent = `Genre: ${book.genre}`;
 
-    let bookIsRead = document.createElement('li');
+    let bookIsRead = document.createElement('div');
     bookIsRead.textContent = `Read? ${book.isRead}`;
+
+    let removeBookButton = document.createElement('button');
+    removeBookButton.classList.add('remove-book-button');
 
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookDetails);
-    // bookDetails.appendChild(bookIndex);
+    bookCard.appendChild(removeBookButton);
     bookDetails.appendChild(bookAuthor);
     bookDetails.appendChild(bookPageCount);
     bookDetails.appendChild(bookGenre);
@@ -159,3 +170,12 @@ function addBookCard(book) {
 
     booksContainer.appendChild(bookCard);
 };
+
+
+function createTestBookCard(book) {
+    books.push(book);
+    addBookCard(book);
+};
+
+
+testBooks.forEach(createTestBookCard);

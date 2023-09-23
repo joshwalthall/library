@@ -8,6 +8,8 @@
     --card-body: #A37C40;
     --card-body-two: #778472;
     --card-shadow: #C1C9BB;
+    --book-card-width: 15rem;
+    --book-card-height: 17rem;
 }
 
 @font-face {
@@ -67,6 +69,7 @@ header {
     background-color: var(--accent-muted);
     color: var(--lighter);
     padding: 2rem;
+    z-index: 2;
 }
 
 .form-container {
@@ -110,10 +113,10 @@ dialog::backdrop {
     display: grid;
     row-gap: 2rem;
     column-gap: 1.3rem;
-    grid-template-columns: repeat(auto-fit, 15rem);
-    grid-template-rows: repeat(auto-fit, 17rem);
-    grid-auto-columns: 15rem;
-    grid-auto-rows: 17rem;
+    grid-template-columns: repeat(auto-fit, var(--book-card-width));
+    grid-template-rows: repeat(auto-fit, var(--book-card-height));
+    grid-auto-columns: var(--book-card-width);
+    grid-auto-rows: var(--book-card-height);
     height: fit-content;
     background-color: var(--light);
     padding: 2rem;
@@ -124,6 +127,10 @@ dialog::backdrop {
 }
 
 .book-card {
+    display: grid;
+    grid-template-columns: 12.5rem;
+    grid-template-rows: max-content 1fr 2rem;
+    row-gap: 1.2rem;
     background-color: var(--card-body-two);
     color: var(--lighter);
     padding: 1.3rem;
@@ -133,6 +140,25 @@ dialog::backdrop {
     border-top-left-radius: 0.1rem;
     border-bottom-left-radius: 0.1rem;
     box-shadow: 0.3rem 0.3rem 0.3rem var(--card-shadow);
+}
+
+.book-title {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.remove-book-button {
+    background: url(icons/close-box.svg);
+    border: none;
+    justify-self: end;
+    align-self: center;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.remove-book-button:active {
+    width: 1.6rem;
+    height: 1.6rem;
 }
 
 .book-title {

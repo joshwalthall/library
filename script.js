@@ -75,6 +75,15 @@ function Book(title, author, pageCount, genre, isRead) {
     this.pageCount = pageCount;
     this.genre = genre;
     this.isRead = isRead;
+    this.toggleRead = function () {
+        console.log(`Book Object isRead before toggleRead: ${this.isRead}`);
+        if (this.isRead == 'Yes') {
+            this.isRead = 'No';
+        } else if (this.isRead == 'No') {
+            this.isRead = 'Yes';
+        };
+        console.log(`Book Object isRead after toggleRead: ${this.isRead}`);
+    };
 };
 
 
@@ -124,6 +133,18 @@ function removeBook() {
 };
 
 
+function toggleBookRead() {
+    let bookIndex = Number(this.dataset.index);
+    let book = books[bookIndex];
+    console.log(`Function toggleBookRead got book: ${book.title}`);
+    book.toggleRead();
+
+    let bookCard = booksContainer.querySelector(`[data-index='${this.dataset.index}']`);
+    let bookIsRead = bookCard.querySelector('.is-read');
+    bookIsRead.textContent = `Read? ${book.isRead}`;
+};
+
+
 function removeBookCards() {
     while (booksContainer.firstChild) {
         booksContainer.removeChild(booksContainer.lastChild);
@@ -160,29 +181,48 @@ function addBookCard(book) {
     bookGenre.textContent = `Genre: ${book.genre}`;
 
     let bookIsRead = document.createElement('div');
+    bookIsRead.classList.add('is-read');
     bookIsRead.textContent = `Read? ${book.isRead}`;
+    
+    bookIndex = books.indexOf(book);
+    bookCard.dataset.index = `${bookIndex}`;
+
+    let buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttons-container');
+
+    let toggleReadButton = document.createElement('button');
+    toggleReadButton.classList.add('toggle-read-button');
+    toggleReadButton.dataset.index = `${bookIndex}`;
+    toggleReadButton.addEventListener('click', toggleBookRead);
 
     let removeBookButton = document.createElement('button');
     removeBookButton.classList.add('remove-book-button');
-    bookIndex = books.indexOf(book);
     removeBookButton.dataset.index = `${bookIndex}`;
     removeBookButton.addEventListener('click', removeBook);
 
     bookCard.appendChild(bookTitle);
-    bookCard.appendChild(bookDetails);
-    bookCard.appendChild(removeBookButton);
     bookDetails.appendChild(bookAuthor);
     bookDetails.appendChild(bookPageCount);
     bookDetails.appendChild(bookGenre);
     bookDetails.appendChild(bookIsRead);
-
+    bookCard.appendChild(bookDetails);
+    buttonsContainer.appendChild(toggleReadButton);
+    buttonsContainer.appendChild(removeBookButton);
+    bookCard.appendChild(buttonsContainer);
+    
     booksContainer.appendChild(bookCard);
 };
 
 
 function createTestBookCard(book) {
-    books.push(book);
-    addBookCard(book);
+    let newBook = new Book(
+        book.title,
+        book.author,
+        book.pageCount,
+        book.genre,
+        book.isRead);
+    books.push(newBook);
+    addBookCard(newBook);
 };
 
 

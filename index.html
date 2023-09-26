@@ -22,9 +22,9 @@
       <div class="form-container">
         <div class="form-title">Use the form below to add books to your library.</div>
         <form id="new-book-form" action="" method="dialog">
-          <label for="book-title">TITLE <span class="req-star" aria-label="required">*</span></label>
+          <label for="book-title"><span class="req-star" aria-label="required">*</span> TITLE</label>
           <input type="text" id="book-title" name="title" required>
-          <label for="book-author">AUTHOR <span class="req-star" aria-label="required">*</span></label>
+          <label for="book-author"><span class="req-star" aria-label="required">*</span> AUTHOR</label>
           <input type="text" id="book-author" name="author" required>
           <label for="book-page-count">PAGE COUNT</label>
           <input type="text" id="book-page-count" name="page-count">
@@ -35,7 +35,7 @@
         </form>
         <menu class="form-buttons-container">
           <button type="submit" id="add-book-button" form="new-book-form">Add Book</button>
-          <button id="cancel-new-book-button">Cancel</button>
+          <button id="cancel-new-book-button" autofocus>Cancel</button>
         </menu>
       </div>
     </dialog>

@@ -41,13 +41,16 @@
 
 body {
     margin: 0;
+    padding: 0;
     font: 1rem "ubuntu";
     color: var(--darker);
 }
 
 .page-container {
+    height: 100vh;
     display: grid;
     grid-template-columns: minmax(18rem, 20vw) minmax(25rem, 1fr);
+    grid-template-rows: 5rem 1fr 2rem;
 }
 
 header {
@@ -117,7 +120,6 @@ dialog::backdrop {
     grid-template-rows: repeat(auto-fit, var(--book-card-height));
     grid-auto-columns: var(--book-card-width);
     grid-auto-rows: var(--book-card-height);
-    height: fit-content;
     background-color: var(--light);
     padding: 2rem;
 }
@@ -147,11 +149,16 @@ dialog::backdrop {
     word-wrap: break-word;
 }
 
+.toggle-read-button {
+    background: url(icons/book-sync.svg);
+    border: none;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
 .remove-book-button {
     background: url(icons/close-box.svg);
     border: none;
-    justify-self: end;
-    align-self: center;
     width: 1.8rem;
     height: 1.8rem;
 }

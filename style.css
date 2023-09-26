@@ -149,23 +149,39 @@ dialog::backdrop {
     word-wrap: break-word;
 }
 
+.buttons-container {
+    display: grid;
+    grid-template-columns: 2rem 2rem 1fr;
+    gap: 0.3rem;
+    align-items: center;
+    justify-items: start;
+}
+
 .toggle-read-button {
     background: url(icons/book-sync.svg);
-    border: none;
-    width: 1.8rem;
-    height: 1.8rem;
 }
 
 .remove-book-button {
     background: url(icons/close-box.svg);
+}
+
+.toggle-read-button,
+.remove-book-button {
     border: none;
+    border-radius: 0.3rem;
     width: 1.8rem;
     height: 1.8rem;
 }
 
+.toggle-read-button:hover,
+.remove-book-button:hover {
+    background-color: var(--light);
+}
+
+.toggle-read-button:active,
 .remove-book-button:active {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.7rem;
+    height: 1.7rem;
 }
 
 .book-title {
